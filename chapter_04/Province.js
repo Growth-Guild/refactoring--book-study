@@ -1,3 +1,5 @@
+import Producer from './Producer.js'
+
 function sampleProvinceData() {
     return {
         name: "Asia",
@@ -87,3 +89,8 @@ class Province {
         return result;
     }
 }
+
+export {
+    Province,
+    sampleProvinceData
+};
