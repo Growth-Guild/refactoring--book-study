@@ -1,0 +1,32 @@
+## 컬렉션 캡슐화하기 (Encapsulate Collection)
+
+### as-is
+
+```javascript
+class Person {
+    get courses() {return this._courses;}
+    set courses(aList) {this._courses = aList;}
+}
+```
+
+### to-be
+```javascript
+class Person {
+    get courses() {return this._courses.slice();}
+    addCourse(aCourse) { /* ... */ }
+    removeCourse(aCourse) { /* ... */ }
+}
+```
+
+* 컬렉션 변수로의 접근을 캡슐화하면서 게터가 커렉션 자체를 반환하도록 한다면, 그 컬렉션을 감싼 클래스가 눈치채지 못하는 상태에서 컬렉션의 원소들이 바뀔 수도 있다.
+* 컬렉션을 감싼 클래스에 컬렉션 변강자 메서드를 만들어서 컬렉션을 소유한 클래스를 통해서만 원소를 변경하도록 하는 것이 좋다.
+
+- - -
+
+### 절차
+1. 캡슐화하지 않은 컬렉션을 변수 캡슐화하기부터 한다.
+2. 컬렉션에 원소를 추가/제거하는 함수를 추가한다.
+3. 정적 검사를 수행한다.
+4. 컬렉션을 참조하는 부분을 모두 찾는다. 컬렉션의 변경자를 호출하는 코드가 모두 앞에서 추가한 추가/제거 함수를 호출하도록 수정한다. 하나씩 수정할 때마다 테스트한다.
+5. 컬렉션 게터를 수정해서 원본 내용을 수정할 수 없는 읽기전용 프락시나 복제본을 반환하게 한다.
+6. 테스트한다.
