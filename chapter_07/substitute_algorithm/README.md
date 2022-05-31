@@ -15,7 +15,7 @@ function foundPerson(people) {
         }
     }
     
-    return "":
+    return "";
 }
 ```
 
