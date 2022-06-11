@@ -1,4 +1,4 @@
-## 예외를 사전화인으로 바꾸기 (Replace Exception with Precheck)
+## 예외를 사전확인으로 바꾸기 (Replace Exception with Precheck)
 
 ### as-is
 ```java
